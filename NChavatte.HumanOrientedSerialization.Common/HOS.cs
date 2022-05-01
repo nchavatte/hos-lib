@@ -12,5 +12,10 @@ namespace NChavatte.HumanOrientedSerialization.Common
 
             return SerialFormBuilder.GetSerialForm(source, Alphabet);
         }
+
+        public static DeserializationResult Deserialize(string serialForm)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
