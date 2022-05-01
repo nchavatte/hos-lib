@@ -1,5 +1,5 @@
 ----------BEGIN HOS FORM----------
-Content-length: 15124
+Content-length: 1524
 
 (Section 1)
 
