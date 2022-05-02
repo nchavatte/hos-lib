@@ -11,10 +11,12 @@ namespace NChavatte.HumanOrientedSerialization.Common
         {
             using (var enumerator = ReadLines(serialForm).GetEnumerator())
             {
+                // Checks opening line
                 if (!enumerator.MoveNext()
                     || !enumerator.Current.LineContent.Equals("----------BEGIN HOS FORM----------"))
                     return DeserializationResult.OpeningLineMissing();
 
+                // Checks content length attribute
                 int contentLength;
                 if (!TryParseContentLength(enumerator, out contentLength))
                     return DeserializationResult.ContentLengthMissing();
@@ -22,6 +24,7 @@ namespace NChavatte.HumanOrientedSerialization.Common
                 List<byte> bytes = new List<byte>();
                 for (int contentLineIndex = 0; enumerator.MoveNext(); contentLineIndex++)
                 {
+                    // Breaks loop if meets closing line
                     if (enumerator.Current.LineContent.Equals("----------END HOS FORM----------"))
                     {
                         if (contentLength == bytes.Count)
@@ -72,23 +75,28 @@ namespace NChavatte.HumanOrientedSerialization.Common
 
         private static DeserializationResult DeserializeLine(int lineNumber, int contentLineIndex, string lineContent, string alphabet)
         {
+            // Checks that line has 2 words at least
             string[] lineParts = lineContent.Split(' ', '\t')
                 .Where(w => !string.IsNullOrWhiteSpace(w))
                 .ToArray();
             if (lineParts.Length < 2)
                 return DeserializationResult.LineCheckSumMissing(lineNumber);
 
+            // Prepares word process loop
             int lineCheckSum = contentLineIndex;
             int wordNumber = 0;
             List<byte> bytes = new List<byte>();
             var words = lineParts.SkipLast(1).ToArray();
+
             foreach (var word in words)
             {
+                // Checks that word can be converted into integer, aka word value
                 wordNumber++;
                 int wordValue;
                 if (!TryGetWordValue(word, alphabet, out wordValue))
                     return DeserializationResult.WordMalformed(lineNumber, wordNumber);
 
+                // Checks word value can be converted into bytes (includes parity check)
                 byte[] wordBytes;
                 if (!TryGetWordBytes(wordValue, word.Length, out wordBytes))
                     return DeserializationResult.ParityBitDoesNotMatch(lineNumber, wordNumber);
@@ -97,10 +105,10 @@ namespace NChavatte.HumanOrientedSerialization.Common
                 lineCheckSum ^= wordValue;
             }
 
+            // Checks line check-sum
             int expectedCheckSum;
             if (!TryGetWordValue(lineParts.Last(), alphabet, out expectedCheckSum))
                 return DeserializationResult.WordMalformed(lineNumber, wordNumber + 1);
-
             if (expectedCheckSum != lineCheckSum)
                 return DeserializationResult.LineCheckSumDoesNotMatch(lineNumber);
 
@@ -128,15 +136,18 @@ namespace NChavatte.HumanOrientedSerialization.Common
 
             int bitCount = 5 * wordLength;
 
+            // Checks parity bit
             int parity = wordValue;
             for (int i = 1; i < bitCount && parity != 0; i++)
                 parity = (parity >> 1) ^ (parity & 1);
-
             if (parity != 0)
                 return false;
 
+            // Removes parity bit
             wordValue >>= 1;
             bitCount--;
+
+            // Splits word value into bytes
             List<byte> bytes = new List<byte>();
             while (bitCount >= 8)
             {
