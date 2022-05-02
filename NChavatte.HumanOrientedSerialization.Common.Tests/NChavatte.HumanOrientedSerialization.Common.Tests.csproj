@@ -8,12 +8,20 @@
 
   <ItemGroup>
     <None Remove="Resources\serial-form.0.txt" />
+    <None Remove="Resources\serial-form.1.txt" />
+    <None Remove="Resources\serial-form.2.txt" />
     <None Remove="Resources\source.0.bin" />
+    <None Remove="Resources\source.1.bin" />
+    <None Remove="Resources\source.2.bin" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\serial-form.0.txt" />
+    <EmbeddedResource Include="Resources\serial-form.1.txt" />
+    <EmbeddedResource Include="Resources\serial-form.2.txt" />
     <EmbeddedResource Include="Resources\source.0.bin" />
+    <EmbeddedResource Include="Resources\source.1.bin" />
+    <EmbeddedResource Include="Resources\source.2.bin" />
   </ItemGroup>
 
   <ItemGroup>
