@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace NChavatte.HumanOrientedSerialization.Common
 {
@@ -15,7 +16,9 @@ namespace NChavatte.HumanOrientedSerialization.Common
 
         public static DeserializationResult Deserialize(string serialForm)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(serialForm)) throw new ArgumentException("is empty", nameof(serialForm));
+
+            return SerialFormDeserializer.Deserialize(serialForm, Alphabet);
         }
     }
 }
