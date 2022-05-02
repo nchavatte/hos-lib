@@ -28,7 +28,7 @@ namespace NChavatte.HumanOrientedSerialization.Common.Tests
             Assert.IsFalse(deserializationResult.IsError, nameof(deserializationResult.IsError));
             Assert.AreEqual(source.Length, deserializationResult.Content.Length, "Byte array length");
             for (int i = 0; i < source.Length; i++)
-                Assert.AreEqual(source[i], deserializationResult.Content[i], $"Byte #{i}");
+                Assert.AreEqual(source[i], deserializationResult.Content[i], $"Byte index: {i}");
         }
     }
 }

@@ -24,12 +24,8 @@ namespace NChavatte.HumanOrientedSerialization.Common.Tests
             Assert.IsFalse(actualResult?.IsError);
             Assert.IsNull(actualResult.Error);
             Assert.AreEqual(expectedBytes.Length, actualResult?.Content?.Length);
-            int byteNum = 0;
-            foreach ((byte ExpectedByte, byte ActualByte) pair in expectedBytes.Zip(actualResult.Content))
-            {
-                byteNum++;
-                Assert.AreEqual(pair.ExpectedByte, pair.ActualByte, $"Byte #{byteNum}");
-            }
+            for (int i = 0; i < expectedBytes.Length; i++)
+                Assert.AreEqual(expectedBytes[i], actualResult.Content[i], $"Byte index: {i}");
         }
     }
 }
