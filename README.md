@@ -1,6 +1,6 @@
 # hos-lib
 
-![CI](https://github.com/nchavatte/hos-lib/actions/workflows/main.yml/badge.svg?branch=develop)
+![CI](https://github.com/nchavatte/hos-lib/actions/workflows/CI.yml/badge.svg?branch=develop)
 
 This .NET library provides conversion of bytes into/from human-friendly
 [serial form](https://github.com/nchavatte/hos-lib/wiki/Serial-form).
