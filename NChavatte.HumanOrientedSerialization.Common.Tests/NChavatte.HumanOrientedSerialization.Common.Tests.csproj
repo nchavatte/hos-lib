@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <None Remove="Resources\serial-form.0.txt" />
+    <None Remove="Resources\serial-form.1.checksum-error-L7W3.txt" />
+    <None Remove="Resources\serial-form.1.parity-error-L6W5.txt" />
     <None Remove="Resources\serial-form.1.txt" />
     <None Remove="Resources\serial-form.2.txt" />
     <None Remove="Resources\source.0.bin" />
@@ -16,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\serial-form.1.checksum-error-L7W3.txt" />
+    <EmbeddedResource Include="Resources\serial-form.1.parity-error-L6W5.txt" />
     <EmbeddedResource Include="Resources\serial-form.0.txt" />
     <EmbeddedResource Include="Resources\serial-form.1.txt" />
     <EmbeddedResource Include="Resources\serial-form.2.txt" />
