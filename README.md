@@ -1,6 +1,7 @@
 # hos-lib
 
-![CI](https://github.com/nchavatte/hos-lib/actions/workflows/CI.yml/badge.svg?branch=develop)
+![CI](https://github.com/nchavatte/hos-lib/actions/workflows/CI.yml/badge.svg?branch=main)
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/NChavatte.HumanOrientedSerialization.Common)](https://www.nuget.org/packages/NChavatte.HumanOrientedSerialization.Common/)
 
 This .NET library provides conversion of bytes into/from human-friendly
 [serial form](https://github.com/nchavatte/hos-lib/wiki/Serial-form).
