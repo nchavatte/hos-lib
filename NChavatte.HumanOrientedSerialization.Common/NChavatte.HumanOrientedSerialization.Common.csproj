@@ -8,7 +8,11 @@
     <RepositoryUrl>https://github.com/nchavatte/hos-lib.git</RepositoryUrl>
     <Authors>NChavatte</Authors>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Description>Provides conversion of bytes to/from a human friendly serial form</Description>
+    <Description>Provides conversion of bytes to/from a human-friendly serial form</Description>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.0-beta-1</Version>
+    <PackageProjectUrl>https://github.com/nchavatte/hos-lib</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
